@@ -1,43 +1,24 @@
-import { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { useState } from "react";
 import Nav from "./components/Nav.jsx";
-import Footer from "./components/Footer.jsx";
-import ThemeToggle from "./components/ThemeToggle.jsx";
-import Landing from "./pages/Landing.jsx";
-import About from "./pages/About.jsx";
-import Projects from "./pages/Projects.jsx";
-import Contact from "./pages/Contact.jsx";
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-}
+import Menu from "./components/Menu.jsx";
+import Hero from "./components/sections/Hero.jsx";
+import AboutSection from "./components/sections/AboutSection.jsx";
+import ProjectsSection from "./components/sections/ProjectsSection.jsx";
+import ContactSection from "./components/sections/ContactSection.jsx";
 
 export default function App() {
-  const { pathname } = useLocation();
-  const isLanding = pathname === "/";
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
-      <ScrollToTop />
-      {isLanding ? (
-        <div className="landing-toggle">
-          <ThemeToggle />
-        </div>
-      ) : (
-        <Nav />
-      )}
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<Landing />} />
-      </Routes>
-      {!isLanding && <Footer />}
+      <Nav menuOpen={menuOpen} onToggleMenu={() => setMenuOpen((o) => !o)} />
+      <Menu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <main>
+        <Hero />
+        <AboutSection />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
     </>
   );
 }

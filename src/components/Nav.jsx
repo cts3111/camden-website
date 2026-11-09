@@ -1,61 +1,48 @@
-import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
-import ThemeToggle from "./ThemeToggle.jsx";
-
-const links = [
-  { to: "/about", label: "About" },
-  { to: "/projects", label: "Projects" },
-  { to: "/contact", label: "Contact" },
-];
-
-export default function Nav() {
-  const [open, setOpen] = useState(false);
+export default function Nav({ menuOpen, onToggleMenu }) {
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <>
-      <header className="nav">
-        <div className="nav-inner">
-          <Link to="/" className="wordmark" onClick={() => setOpen(false)}>
-            Camden Sun <span className="dot" />
-          </Link>
+    <header className="nav">
+      <a
+        href="#home"
+        className="wordmark"
+        onClick={(e) => {
+          e.preventDefault();
+          scrollTop();
+        }}
+      >
+        Camden Sun
+      </a>
 
-          <nav className="nav-links">
-            {links.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                className={({ isActive }) =>
-                  "nav-link" + (isActive ? " active" : "")
-                }
-              >
-                {l.label}
-              </NavLink>
-            ))}
-          </nav>
+      <div className="nav-side">
+        <button
+          className="icon-btn"
+          aria-label="Back to top"
+          title="Back to top"
+          onClick={scrollTop}
+        >
+          <span className="arr arr-1">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 20V4m0 0-6 6m6-6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+          <span className="arr arr-2">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 20V4m0 0-6 6m6-6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </button>
 
-          <div className="nav-side">
-            <ThemeToggle />
-            <button
-              className="nav-burger"
-              aria-expanded={open}
-              onClick={() => setOpen((o) => !o)}
-            >
-              {open ? "Close" : "Menu"}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {open && (
-        <div className="mobile-menu">
-          <p className="label">Navigation</p>
-          {links.map((l) => (
-            <Link key={l.to} to={l.to} onClick={() => setOpen(false)}>
-              {l.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </>
+        <button
+          className={"menu-btn" + (menuOpen ? " open" : "")}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          onClick={onToggleMenu}
+        >
+          <span />
+          <span />
+        </button>
+      </div>
+    </header>
   );
 }
