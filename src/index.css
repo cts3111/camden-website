@@ -213,19 +213,23 @@ button { font: inherit; background: none; border: none; cursor: pointer; color: 
 }
 
 /* ---------- hero (dark) ---------- */
-.hero-inner { max-width: var(--maxw); }
+.hero-inner { max-width: var(--maxw); text-align: center; }
 .hero-title {
   font-size: clamp(4.4rem, 13vw, 10rem);
   line-height: 0.98;
   letter-spacing: -0.02em;
   margin: 22px 0 28px;
+  will-change: transform;
 }
 .hero-title em { font-style: italic; color: var(--accent); }
 .hero-sub {
   max-width: 470px;
+  margin: 0 auto;
   opacity: 0.72;
   font-size: 1.06rem;
+  will-change: transform;
 }
+.hero-inner .label { will-change: transform; }
 .hero-cta {
   margin-top: 44px;
   display: inline-flex;
@@ -254,6 +258,7 @@ button { font: inherit; background: none; border: none; cursor: pointer; color: 
 .art { position: absolute; inset: 0; pointer-events: none; }
 .art-hero {
   background: linear-gradient(165deg, #221610 0%, #0b0b0c 58%, #0b0b0c 100%);
+  will-change: transform;
 }
 .art-hero .orb {
   position: absolute;
