@@ -1,16 +1,24 @@
+import { Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
 export default function Nav({ menuOpen, onToggleMenu }) {
-  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const goHome = (e) => {
+    e.preventDefault();
+    if (pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+    else navigate("/");
+  };
+
+  const scrollTop = () => {
+    if (pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+    else navigate("/");
+  };
 
   return (
     <header className="nav">
-      <a
-        href="#home"
-        className="wordmark"
-        onClick={(e) => {
-          e.preventDefault();
-          scrollTop();
-        }}
-      >
+      <a href="/" className="wordmark" onClick={goHome}>
         Camden Sun
       </a>
 

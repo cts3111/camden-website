@@ -1,8 +1,7 @@
+import { Link } from "react-router-dom";
 import { projects } from "../../data/content.js";
 
 export default function ProjectsSection() {
-  const [p] = projects;
-
   return (
     <section id="projects" className="section dark">
       <div className="section-inner">
@@ -11,43 +10,40 @@ export default function ProjectsSection() {
           Selected <em>Work</em>
         </h2>
 
-        <div className="proj-grid">
-          <div className="art art-project" aria-hidden="true">
-            <span className="panel p1" />
-            <span className="panel p2" />
-            <span className="panel p3" />
-            <span className="bar-chart">
-              <i />
-              <i />
-              <i />
-              <i />
-            </span>
-            <span className="proj-scanline" />
-          </div>
+        <div className="proj-card-grid">
+          {projects.map((p, i) => (
+            <Link key={p.slug} className="p-card" to={`/projects/${p.slug}`}>
+              <div className="p-card-art" aria-hidden="true">
+                <span className="panel p1" />
+                <span className="panel p2" />
+                <span className="panel p3" />
+                <span className="bar-chart">
+                  <i />
+                  <i />
+                  <i />
+                  <i />
+                </span>
+              </div>
+              <span className="p-status">{p.status}</span>
+              <h3 className="p-card-title">
+                0{i + 1} — {p.title}
+              </h3>
+              <p className="p-card-sum">{p.summary}</p>
+              <p className="p-card-result">
+                <span className="label">Result</span> {p.result}
+              </p>
+              <span className="btn-line">
+                View project <span className="arr">→</span>
+              </span>
+            </Link>
+          ))}
 
-          <div className="proj-info">
-            <span className="proj-status">{p.status}</span>
-            <h3 className="proj-title">{p.title}</h3>
-            <p className="proj-desc">{p.description}</p>
-            <p className="label proj-meta">{p.tags.join(" · ")}</p>
-            <a
-              className="btn-line"
-              href={p.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              View on GitHub <span className="arr">→</span>
-            </a>
+          <div className="p-card ghost-card">
+            <div className="ghost-inner">
+              <div className="plus">+</div>
+              <p className="label">Next project goes here</p>
+            </div>
           </div>
-        </div>
-
-        <div className="proj-more">
-          <span className="proj-more-item">
-            <span className="label">02</span> Coming soon
-          </span>
-          <span className="proj-more-item">
-            <span className="label">03</span> Coming soon
-          </span>
         </div>
       </div>
     </section>

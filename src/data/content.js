@@ -3,7 +3,7 @@
 export const profile = {
   name: "Camden Sun",
   siteTitle: "Camden's Website",
-  eyebrow: "Statistics & Data Science · UCLA",
+  eyebrow: "Statistics & Data Science — UCLA",
   tagline:
     "Hi, I'm Camden Sun — I turn data into decisions with Python, statistics, and a healthy dose of curiosity.",
   email: "camdensun@gmail.com",
@@ -93,15 +93,54 @@ export const interests = [
   "Hot pot",
 ];
 
+// ---------------------------------------------------------------------------
+// Projects — add a new object here and it becomes a card + a project page.
+// `demoUrl` is the Streamlit Cloud URL once deployed (empty = "coming soon").
+// ---------------------------------------------------------------------------
+
 export const projects = [
   {
-    title: "Visual Harmony Dashboard",
-    tag: "Featured",
-    status: "Live demo coming soon",
-    description:
-      "Interactive dashboard companion to the E-Commerce Visual Harmony Analyzer — testing whether visual harmony in product photography drives revenue. Built with Python, OpenCV, and Streamlit over a K-Means color pipeline trained on ~44,000 product images.",
-    tags: ["Python", "OpenCV", "Streamlit", "pandas", "K-Means"],
+    slug: "visual-harmony-analyzer",
+    title: "Visual Harmony Analyzer",
+    status: "Live demo",
+    demoUrl: "",
+    summary:
+      "End-to-end computer-vision study: does visual harmony in e-commerce product photography drive engagement? ~44,000 product images through a custom OpenCV + MediaPipe + K-Means color pipeline.",
+    result:
+      "Business test null at all three harmony levels (p 0.27–0.84) — reported honestly. The pipeline itself validated: 67.7% test accuracy on color-family classification, 132/132 instrument unit tests.",
+    tags: ["Python", "OpenCV", "MediaPipe", "scikit-learn", "Streamlit"],
     link: "https://github.com/cts3111/visual-harmony-dashboard",
-    linkLabel: "View on GitHub",
+    linkLabel: "View dashboard on GitHub",
+    findings: {
+      headline: "The business test came back null — and that's the headline.",
+      lead: "1,418 judgeable products, three harmony levels, zero reliable effect on engagement. The honest report, followed by everything that did hold up.",
+      stats: [
+        {
+          name: "Warm/cool harmony",
+          value: "−3.3%",
+          detail: "on rating count · CI −12.8%…+7.3% · p = 0.53",
+        },
+        {
+          name: "4-season harmony",
+          value: "+7.3%",
+          detail: "on rating count · CI −5.4%…+21.7% · p = 0.27",
+        },
+        {
+          name: "12-season harmony",
+          value: "−1.8%",
+          detail: "on rating count · CI −17.3%…+16.6% · p = 0.84",
+        },
+      ],
+      heldUp: [
+        "Color-family model: 67.7% test accuracy (616/910), best-in-class vs. open-source benchmark",
+        "Palette instrument: 132/132 unit tests; synthetic painted-torso extraction 20/20",
+        "External benchmark (DeepFashion2, 925 images): 85% color-family agreement",
+        "Deterministic pipeline: identical results run-to-run (seeded K-Means), visual QA on every stage",
+      ],
+      lesson:
+        "The first batch (n = 508) showed a +29% hint for 12-season harmony (p = 0.074). At three times the scale it collapsed to −1.8% — a small-sample illusion. That's why the hint was reported as a hint, and why the overnight scale-up was run.",
+      curiosity:
+        "One lead for a future study: strict two-photo ensemble flags (n = 8) showed +147% (p = 0.008). Too fragile to trust, but consistent with 'only high-confidence exact-palette matches matter.'",
+    },
   },
 ];
