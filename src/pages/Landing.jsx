@@ -1,35 +1,52 @@
 import { Link } from "react-router-dom";
-import SunMark from "../components/SunMark.jsx";
+import ThemeToggle from "../components/ThemeToggle.jsx";
 import { profile } from "../data/content.js";
+
+const marqueeItems = [
+  "Statistics & Data Science",
+  "UCLA",
+  "Data Analyst",
+  "Data Scientist",
+  "Python",
+  "OpenCV",
+  "SQL",
+  "Los Angeles",
+  "Available for internships",
+];
+
+function Marquee() {
+  const doubled = [...marqueeItems, ...marqueeItems];
+  return (
+    <div className="marquee" aria-hidden="true">
+      <div className="marquee-track">
+        {doubled.map((t, i) => (
+          <span key={i}>
+            {t} <em>—</em>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Landing() {
   return (
     <div className="landing">
-      <div className="blob blob-1" />
-      <div className="blob blob-2" />
-      <div className="blob blob-3" />
-      <div className="rays" aria-hidden="true" />
-
-      <div className="landing-content">
-        <div className="landing-mark">
-          <SunMark size={84} />
-        </div>
-        <p className="landing-eyebrow">{profile.eyebrow}</p>
-        <h1 className="landing-title">
-          Camden&rsquo;s <span className="gradient-text">Website</span>
-        </h1>
-        <p className="landing-sub">{profile.tagline}</p>
-        <div className="landing-cta">
-          <Link to="/about" className="btn btn-primary btn-lg">
-            Enter the Site →
-          </Link>
-          <Link to="/projects" className="btn btn-ghost btn-lg">
-            See Projects
-          </Link>
-        </div>
+      <div className="landing-toggle">
+        <ThemeToggle />
       </div>
 
-      <p className="landing-foot">Data analytics &amp; data science portfolio</p>
+      <p className="label landing-kicker">{profile.eyebrow}</p>
+      <h1 className="display landing-title">
+        <span className="block">Camden</span>
+        <span className="block display-outline">Sun</span>
+      </h1>
+      <p className="landing-sub">{profile.tagline}</p>
+      <Link to="/about" className="landing-enter">
+        Enter the Site <span className="arr">→</span>
+      </Link>
+
+      <Marquee />
     </div>
   );
 }

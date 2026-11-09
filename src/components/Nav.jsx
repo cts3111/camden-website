@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import SunMark from "./SunMark.jsx";
 import ThemeToggle from "./ThemeToggle.jsx";
 
 const links = [
@@ -13,42 +12,50 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="nav">
-      <div className="nav-inner">
-        <Link to="/" className="nav-brand" onClick={() => setOpen(false)}>
-          <SunMark size={26} />
-          <span>Camden&rsquo;s Website</span>
-        </Link>
+    <>
+      <header className="nav">
+        <div className="nav-inner">
+          <Link to="/" className="wordmark" onClick={() => setOpen(false)}>
+            Camden Sun <span className="dot" />
+          </Link>
 
-        <nav className={`nav-links ${open ? "open" : ""}`}>
-          {links.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              className={({ isActive }) =>
-                "nav-link" + (isActive ? " active" : "")
-              }
-              onClick={() => setOpen(false)}
+          <nav className="nav-links">
+            {links.map((l) => (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                className={({ isActive }) =>
+                  "nav-link" + (isActive ? " active" : "")
+                }
+              >
+                {l.label}
+              </NavLink>
+            ))}
+          </nav>
+
+          <div className="nav-side">
+            <ThemeToggle />
+            <button
+              className="nav-burger"
+              aria-expanded={open}
+              onClick={() => setOpen((o) => !o)}
             >
-              {l.label}
-            </NavLink>
-          ))}
-        </nav>
-
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <ThemeToggle />
-          <button
-            className="nav-burger"
-            aria-label="Toggle menu"
-            aria-expanded={open}
-            onClick={() => setOpen((o) => !o)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+              {open ? "Close" : "Menu"}
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {open && (
+        <div className="mobile-menu">
+          <p className="label">Navigation</p>
+          {links.map((l) => (
+            <Link key={l.to} to={l.to} onClick={() => setOpen(false)}>
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </>
   );
 }
