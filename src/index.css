@@ -257,7 +257,7 @@ button { font: inherit; background: none; border: none; cursor: pointer; color: 
 /* CSS-art hero backdrop */
 .art { position: absolute; inset: 0; pointer-events: none; }
 .art-hero {
-  background: linear-gradient(165deg, #221610 0%, #0b0b0c 58%, #0b0b0c 100%);
+  background: linear-gradient(165deg, #141b30 0%, #0b0b0c 58%, #0b0b0c 100%);
   will-change: transform;
 }
 .art-hero .orb {
@@ -269,13 +269,13 @@ button { font: inherit; background: none; border: none; cursor: pointer; color: 
   top: 17%;
   background: radial-gradient(
     circle at 35% 35%,
-    #ffb98f 0%,
-    #e8622f 42%,
-    rgba(232, 98, 47, 0.18) 68%,
-    transparent 70%
+    #e4eaff 0%,
+    #8fa3e8 28%,
+    #3d4c86 58%,
+    rgba(61, 76, 134, 0.14) 74%,
+    transparent 76%
   );
-  filter: blur(1.5px);
-  opacity: 0.92;
+  opacity: 0.96;
 }
 .ring {
   position: absolute;
@@ -287,11 +287,11 @@ button { font: inherit; background: none; border: none; cursor: pointer; color: 
 .haze {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.5;
+  filter: blur(50px);
+  opacity: 0.3;
 }
-.h1 { width: 42vmin; height: 42vmin; background: rgba(232, 67, 47, 0.2); left: -9%; bottom: -7%; }
-.h2 { width: 32vmin; height: 32vmin; background: rgba(255, 154, 77, 0.16); left: 32%; top: -12%; }
+.h1 { width: 42vmin; height: 42vmin; background: rgba(96, 116, 200, 0.2); left: -9%; bottom: -7%; }
+.h2 { width: 32vmin; height: 32vmin; background: rgba(150, 175, 255, 0.14); left: 32%; top: -12%; }
 
 /* ---------- about (light) ---------- */
 .about-grid {
