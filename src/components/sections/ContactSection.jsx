@@ -23,13 +23,13 @@ export default function ContactSection() {
   return (
     <section id="contact" className="section light">
       <div className="section-inner">
-        <p className="label">03 — Contact</p>
+        <p className="label">03. Contact</p>
         <h2 className="sec-title">
           Say <em>Hello</em>
         </h2>
         <p className="contact-line">
           Open to internships &amp; entry-level data analytics and data science
-          roles — Fall 2026.
+          roles, Fall 2026.
         </p>
 
         <div className="c-rows">

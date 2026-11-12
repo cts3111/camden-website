@@ -43,6 +43,9 @@ export default function App() {
     <>
       <ScrollToTop />
       <SnapToggle />
+      <p className="wip-banner" role="status">
+        Site under construction: more coming soon.
+      </p>
       <Nav menuOpen={menuOpen} onToggleMenu={() => setMenuOpen((o) => !o)} />
       <Menu open={menuOpen} onClose={() => setMenuOpen(false)} />
       <Routes>

@@ -4,7 +4,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="section light">
       <div className="section-inner">
-        <p className="label">01 — About</p>
+        <p className="label">01. About</p>
         <h2 className="sec-title">
           Turning data into <em>decisions</em>
         </h2>
@@ -15,7 +15,7 @@ export default function AboutSection() {
               I&rsquo;m a Statistics &amp; Data Science student at UCLA,
               graduating December 2026. I&rsquo;ve spent three roles at Noah
               Medical turning raw image and sensor data into decisions that
-              shipped — from a camera distortion study to an automated robotic
+              shipped, from a camera distortion study to an automated robotic
               calibration pipeline. I love the moment a messy dataset becomes a
               clear story.
             </p>
@@ -34,7 +34,7 @@ export default function AboutSection() {
               <div key={e.role} className="mini-item">
                 <span className="mini-role">{e.role}</span>
                 <span className="label">
-                  {e.org} — {e.when}
+                  {e.org} · {e.when}
                 </span>
               </div>
             ))}
@@ -43,7 +43,7 @@ export default function AboutSection() {
               {education[0].when}
             </p>
             <p className="label mini-note">
-              {leadership[0].role} — {leadership[0].org}
+              {leadership[0].role} · {leadership[0].org}
             </p>
           </div>
         </div>

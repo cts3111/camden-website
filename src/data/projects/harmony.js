@@ -5,7 +5,7 @@ export const harmonyProject = {
     slug: "visual-harmony-analyzer",
     title: "Visual Harmony Analyzer",
     status: "Live demo",
-    demoUrl: "https://visual-harmony-dashboard.streamlit.app/?embed=true",
+    demoUrl: "https://visual-harmony-dashboard.streamlit.app/",
     // One sentence, resume-headline style: what it is + who it helps.
     headline:
       "Measured whether color harmony in e-commerce product photography drives engagement across 30,000 Amazon listings, and reported the honest answer: no detectable effect.",
